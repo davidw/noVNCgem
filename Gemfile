@@ -1,4 +1,4 @@
 source "http://rubygems.org"
 
-# Specify your gem's dependencies in foundation.gemspec
+# Specify your gem's dependencies in noVNCgem.gemspec
 gemspec
