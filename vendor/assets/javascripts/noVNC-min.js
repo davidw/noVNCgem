@@ -1,0 +1,9 @@
+//= require noVNC/util
+//= require noVNC/webutil
+//= require noVNC/base64
+//= require noVNC/websock
+//= require noVNC/des
+//= require noVNC/input
+//= require noVNC/display
+//= require noVNC/rfb
+//= require noVNC/jsunzip
