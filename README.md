@@ -1,5 +1,4 @@
-noVNC Rails Gem
-===============
+# noVNC Rails Gem
 
 This gem is an attempt to make noVNC easy to install in a Rails application.
 
@@ -10,6 +9,13 @@ code available, like a generator.
 
 To use:
 
+## Gemfile
     gem 'noVNC', :git => "git://github.com/davidw/noVNCgem.git"
+
+## load just the minimum to run noVNC
+    //= require noVNC-min
+
+## or load the whole suite
+    //= require noVNC-all
 
 The original noVNC is available here: http://kanaka.github.com/noVNC/
