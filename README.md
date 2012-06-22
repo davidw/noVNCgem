@@ -12,10 +12,24 @@ To use:
 ## Gemfile
     gem 'noVNC', :git => "git://github.com/davidw/noVNCgem.git"
 
-## load just the minimum to run noVNC
+## load just the minimum to run noVNC in application.js or some per-controller .js.
     //= require noVNC-min
 
 ## or load the whole suite
     //= require noVNC-all
+
+**OR**
+
+You can also load it on a per-page basis with these helpers:
+
+   include_novnc_javascript_min
+
+Which loads just the minimum needed to get going.
+
+   include_novnc_javascript_all
+
+   include_novnc_javascript
+
+These, which are equivalent, load everything.
 
 The original noVNC is available here: http://kanaka.github.com/noVNC/
