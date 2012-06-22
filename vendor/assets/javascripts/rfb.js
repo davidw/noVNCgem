@@ -234,6 +234,7 @@ function constructor() {
         }
     });
     ws.on('close', function(e) {
+        Util.Warn("WebSocket on-close event");
         var msg = "";
         if (e.code) {
             msg = " (code: " + e.code;
@@ -253,7 +254,8 @@ function constructor() {
         }
     });
     ws.on('error', function(e) {
-        fail("WebSock reported an error");
+        Util.Warn("WebSocket on-error event");
+        //fail("WebSock reported an error");
     });
 
 
@@ -424,15 +426,15 @@ updateState = function(state, statusMsg) {
         func = Util.Warn;
     }
 
+    cmsg = typeof(statusMsg) !== 'undefined' ? (" Msg: " + statusMsg) : "";
+    func("New state '" + state + "', was '" + oldstate + "'." + cmsg);
+
     if ((oldstate === 'failed') && (state === 'disconnected')) {
-        // Do disconnect action, but stay in failed state.
+        // Do disconnect action, but stay in failed state
         rfb_state = 'failed';
     } else {
         rfb_state = state;
     }
-
-    cmsg = typeof(statusMsg) !== 'undefined' ? (" Msg: " + statusMsg) : "";
-    func("New state '" + rfb_state + "', was '" + oldstate + "'." + cmsg);
 
     if (connTimer && (rfb_state !== 'connect')) {
         Util.Debug("Clearing connect timer");
@@ -681,6 +683,7 @@ init_msg = function() {
             case "003.007": rfb_version = 3.7; break;
             case "003.008": rfb_version = 3.8; break;
             case "004.000": rfb_version = 3.8; break;  // Intel AMT KVM
+            case "004.001": rfb_version = 3.8; break;  // RealVNC 4.6
             default:
                 return fail("Invalid server version " + sversion);
         }
@@ -1559,7 +1562,7 @@ scan_tight_imgQ = function() {
             } else if (data.type === 'rgb') {
                 display.blitRgbImage(data.x, data.y, data.width, data.height, data.img.data, 0);
             } else {
-                ctx.drawImage(data.img, data.x, data.y);
+                display.drawImage(data.img, data.x, data.y);
             }
         }
         setTimeout(scan_tight_imgQ, scan_imgQ_rate);
