@@ -8,7 +8,7 @@ task :copy_files_from_git do
   end
 
   Dir.glob(srcdir + 'include/*.js').each do |jsf|
-    cp jsf, "vendor/assets/javascripts"
+    cp jsf, "vendor/assets/javascripts/noVNC"
   end
 
   Dir.glob(srcdir + 'include/*.css').each do |csf|
