@@ -891,9 +891,9 @@ init_msg = function() {
         setTimeout(scan_tight_imgQ, scan_imgQ_rate);
 
         if (conf.encrypt) {
-            updateState('normal', "Connected (encrypted) to: " + fb_name);
+            updateState('normal', "Connected to: " + fb_name);
         } else {
-            updateState('normal', "Connected (unencrypted) to: " + fb_name);
+            updateState('normal', "Connected to: " + fb_name);
         }
         break;
     }
